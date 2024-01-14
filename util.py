@@ -1,4 +1,5 @@
 import logging
+import os
 import sqlalchemy as sa
 
 from io import StringIO
@@ -13,7 +14,9 @@ from models import  Base
 mode = 'DEFAULT'
 
 config = ConfigParser()
-config.read('config.ini')
+current_path = os.path.dirname(__file__)
+config_file = os.path.join(current_path, 'config.ini')
+config.read(config_file)
 try:
     DB_USER = config.get(mode, 'db_user')
     DB_PWD = config.get(mode, 'db_pwd')
