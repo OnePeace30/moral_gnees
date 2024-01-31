@@ -54,7 +54,7 @@ class Cnnrss(Base):
             o["title"] = item.find('title').text
             o["link"] = item.find('link').text
             try:
-                o["text"] = item.find('description')
+                o["text"] = item.find('description').text
             except AttributeError:
                 o["text"] = None
             try:
