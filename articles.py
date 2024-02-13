@@ -117,8 +117,10 @@ links = {
 db = Database()
 universities = db.session.query(Universities).all()
 uni_kw = {}
+uni_kw2 = {}
 for uni in universities:
     uni_kw[uni] = uni.keywords_from_news.split(" | ")
+    uni_kw2[uni] = list(map(lambda z: z.strip(), uni.words_to_determine_atisimitics_event.split(',')))
 
 def main():
     for site_obj in links:
@@ -136,7 +138,8 @@ def save_(items):
         print()
         for uni in uni_kw:
             try:
-                if any(list(map(lambda z: z in item['title'], uni_kw[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw[uni]))):
+                if (any(list(map(lambda z: z in item['title'], uni_kw[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw[uni])))) and \
+                    (any(list(map(lambda z: z in item['title'], uni_kw2[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw2[uni])))):
                     m, created = RelatedArticles.get_or_create(
                         db.session, 
                         defaults={

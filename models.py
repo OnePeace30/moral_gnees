@@ -78,6 +78,7 @@ class Universities(Base):
     offical_statment = sa.Column(sa.Text, nullable=True)
     about = sa.Column(sa.Text, nullable=True)
     keywords_from_news = sa.Column(sa.String, nullable=True)
+    words_to_determine_atisimitics_event = sa.Column(sa.String, nullable=True)
     state = relationship('State')
 
 class Sources(Base):
