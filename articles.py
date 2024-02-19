@@ -138,8 +138,8 @@ def save_(items):
         print()
         for uni in uni_kw:
             try:
-                if (any(list(map(lambda z: z in item['title'], uni_kw[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw[uni])))) and \
-                    (any(list(map(lambda z: z in item['title'], uni_kw2[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw2[uni])))):
+                if (any(list(map(lambda z: z in item['title'], uni_kw[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw[uni])))): #and \
+                    # (any(list(map(lambda z: z in item['title'], uni_kw2[uni]))) or any(list(map(lambda z: z in item['text'], uni_kw2[uni])))):
                     m, created = RelatedArticles.get_or_create(
                         db.session, 
                         defaults={
